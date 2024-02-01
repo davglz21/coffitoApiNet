@@ -15,13 +15,31 @@ namespace Coffito.Core.Service.Repositories
             _coffeeTypesContext = coffeeTypesContext;
         }
 
-        public Task<List<CoffeeTypes>> GetCoffeeTypesAsync()
+        public async Task<List<CoffeeTypes>> GetCoffeeTypesAsync()
         {
             try
             {
-                return _coffeeTypesContext.CoffeeTypes.ToListAsync();
+                return await _coffeeTypesContext.CoffeeTypes.ToListAsync();
             }
             catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                throw new Exception(ex.ToString());
+            }
+        }
+
+        public async Task<CoffeeTypes> GetCoffeeTypesByIdAsync(int id)
+        {
+            try
+            {
+                var coffeeInfo = await _coffeeTypesContext.CoffeeTypes.SingleOrDefaultAsync(x => x.ID == id);
+                if(coffeeInfo != null) 
+                {
+                    return coffeeInfo;
+                }
+                return new CoffeeTypes();
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
                 throw new Exception(ex.ToString());

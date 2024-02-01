@@ -10,5 +10,6 @@ namespace Coffito.Business.Service.Interfaces
     public interface ICoffeeTypesManager
     {
         Task<List<CoffeeTypes>> GetCoffeeTypesAsync();
+        Task<CoffeeTypes> GetCoffeeTypesByIdAsync(int id);
     }
 }

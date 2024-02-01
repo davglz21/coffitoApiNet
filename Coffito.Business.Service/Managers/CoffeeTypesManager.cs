@@ -20,9 +20,12 @@ namespace Coffito.Business.Service.Managers
 
         public async Task<List<CoffeeTypes>> GetCoffeeTypesAsync()
         {
-            var coffeeTypes = new List<CoffeeTypes>();
-            coffeeTypes = await _coffeeTypesRepository.GetCoffeeTypesAsync();
-            return coffeeTypes;
+            return  await _coffeeTypesRepository.GetCoffeeTypesAsync(); 
+        }
+
+        public async Task<CoffeeTypes> GetCoffeeTypesByIdAsync(int id)
+        {
+            return  await _coffeeTypesRepository.GetCoffeeTypesByIdAsync(id); 
         }
     }
 }

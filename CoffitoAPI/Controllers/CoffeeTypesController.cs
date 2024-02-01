@@ -21,5 +21,12 @@ namespace CoffitoAPI.Controllers
             var tiposCafe = await _coffeeTypesManager.GetCoffeeTypesAsync();
             return Ok(tiposCafe);
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<CoffeeTypes>> GetCoffeeTypesById(int id)
+        {
+            var tiposCafe = await _coffeeTypesManager.GetCoffeeTypesByIdAsync(id);
+            return Ok(tiposCafe);
+        }
     }
 }

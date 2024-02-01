@@ -10,5 +10,6 @@ namespace Coffito.Core.Service.Interfaces
     public interface ICoffeeTypesRepository: IDisposable
     {
         Task<List<CoffeeTypes>> GetCoffeeTypesAsync();
+        Task<CoffeeTypes> GetCoffeeTypesByIdAsync(int id);
     }
 }
